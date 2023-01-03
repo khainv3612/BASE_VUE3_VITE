@@ -1,0 +1,35 @@
+.btn-common {
+    @apply rounded-m h-size-button-01 text-button transition-all
+    focus:outline-none
+    visited:outline-none #{!important};
+}
+// primary
+.btn-primary {
+    @apply bg-brand-primary border-brand-primary text-color-light
+    enabled:hover:bg-hover-primary enabled:hover:border-hover-primary
+    disabled:bg-disabled-primary disabled:border-disabled-primary #{!important};
+}
+// secondary
+.btn-secondary {
+    @apply bg-brand-secondary border-brand-secondary text-color-light
+    enabled:hover:bg-hover-secondary enabled:hover:border-hover-secondary
+    disabled:bg-disabled-secondary disabled:border-disabled-secondary #{!important};
+}
+// tertiary
+.btn-tertiary {
+    @apply bg-bg-02 border-brand-primary text-brand-primary
+    enabled:hover:border-hover-primary enabled:hover:text-hover-primary
+    disabled:border-disabled-primary disabled:text-disabled-primary #{!important};
+}
+// danger
+.btn-danger {
+    @apply bg-support-danger border-support-danger text-color-light
+    enabled:hover:bg-hover-danger enabled:hover:border-hover-danger
+    disabled:bg-disabled-danger disabled:border-disabled-danger #{!important};
+}
+// ghost
+.btn-ghost {
+  @apply border-none text-brand-primary
+  enabled:hover:bg-disabled-primary enabled:hover:text-hover-primary
+  disabled:text-disabled-primary disabled:bg-transparent #{!important};
+}

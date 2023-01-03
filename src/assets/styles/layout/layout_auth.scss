@@ -1,0 +1,17 @@
+.header_auth_container_size {
+  height: $height-header-auth;
+}
+
+.footer_auth_container {
+  height: $height-footer-auth;
+}
+
+.auth_layout_config {
+  min-height: $min-height-auth-layout;
+  @apply items-center
+}
+
+.auth-page-container {
+  border-color: $color-green-2;
+  @apply w-116 m-auto items-center rounded-xl border-2 p-5
+}

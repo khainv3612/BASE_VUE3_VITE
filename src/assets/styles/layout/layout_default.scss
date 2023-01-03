@@ -1,0 +1,11 @@
+.header_defaultcontainer {
+  height: $height-header-default;
+}
+.footer_default_container {
+  height: $height-footer-default;
+}
+
+.default_layout_config {
+  min-height: $min-height-default-layout;
+  @apply items-center
+}

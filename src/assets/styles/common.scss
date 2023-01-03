@@ -1,0 +1,16 @@
+html::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  //font-family: $font-root;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+}

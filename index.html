@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" href="/favicon.ico"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Base">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>Amaisoft</title>
+</head>
+<body>
+<div id="app"></div>
+<script type="module" src="/src/main.js">
+</script>
+<script>
+  const INTERVAL_UPDATE_SW = 3600
+  let newWorker
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(registrations => {
+      if (registrations.length > 0)
+        registrations.forEach(reg => reg.update())
+    })
+    navigator.serviceWorker.register('/service-worker.js').then(reg => {
+      setInterval(() => {
+        reg.update()
+      }, INTERVAL_UPDATE_SW)
+      reg.addEventListener('updatefound', async () => {
+        await clearCache()
+        // A wild service worker has appeared in reg.installing!
+        newWorker = reg.installing
+
+        // Here is when the activated state was triggered from the lifecycle of the service worker.
+        newWorker.addEventListener('statechange', async () => {
+          // Has network.state changed?
+          switch (newWorker.state) {
+            case 'installed':
+              if (navigator.serviceWorker.controller) {
+                // new update available
+                window.location.reload(true)
+              }
+              // No update available
+              break
+          }
+        })
+      })
+    })
+
+    // This will be triggered when the service worker is replaced with a new one.
+    navigator.serviceWorker.addEventListener('controllerchange', async function () {
+      // await clearCache()
+      window.location.reload(true)
+    })
+  }
+
+  async function clearCache() {
+    if (window.caches != null) {
+      let res = false
+      caches.keys().then(cacheNames => {
+        cacheNames.forEach(cacheName => {
+          caches.delete(cacheName).then(function (response) {
+            res = true
+          })
+        })
+      })
+    }
+    await localStorage.clear()
+    await sessionStorage.clear()
+  }
+
+</script>
+
+</body>
+</html>

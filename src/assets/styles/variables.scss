@@ -1,0 +1,76 @@
+// color
+$color-black: rgb(15, 22, 31);
+
+// color-orange
+$color-orange-1: #f4a03e;
+$color-orange-2: #ff9300;
+$color-orange-3: #fff3cc;
+//color-red
+$color-red-1: #d8414a;
+$color-red-2: #ff4a4a;
+$color-red-3: #ffdce4;
+$color-red-4: #f56c6d;
+//color-green:
+$color-green-2: #2ec561;
+$color-green-1: #6ecfc4;
+$color-green-3: #ddf7e0;
+//color-text
+$color-text-5: #183c29;
+$color-text-4: #011627;
+$color-text-3: #535353;
+$color-text-2: #828b92;
+$color-text-1: #cdd1d4;
+//color-grey
+$color-gray: #f9f9f9;
+$color-white: #ffffff;
+$color-text-2: #636363;
+$color-border-box: #8f8e8e;
+
+
+//padding
+$padding-layout_auth: 0px;
+$padding-layout_default: 0px;
+$padding-header-common: 0px 20px;
+$padding-input-inner: 0px;
+$padding-form: 30px;
+$padding-form-create-notification-to-top: 144px;
+
+//height
+$min-height-sidebar-item: 48px;
+$min-height-copyright: 45px;
+$height-header-auth: 50px;
+$height-footer-auth: 50px;
+$height-header-default: 57px;
+$height-footer-default: 50px;
+$height-input: 40px;
+$min-height-auth-layout: calc(100vh - $height-header-auth - $height-footer-auth - 2 * $padding-layout_auth);
+$min-height-default-layout: calc(100vh - $height-header-default - 2 * $padding-layout_default);
+$height-from-header-to-container-personnel: 170px;
+
+$height-title: 48px + 64px + 32px;
+$height-title-filter: 68px + 50px;
+$height-navbar-milkdown: 56px;
+//$height-editor-notification: calc(100vh - $padding-form-create-notification-to-top);
+$height-editor-notification: calc(100vh);
+$height-lst-token-div: calc(60vh);
+
+//width
+$max-width: 1280px;
+$container-sidebar: 240px;
+$sidebar-setting: 160px;
+$collapse-sidebar: 48px;
+$collapse-sidebar-hidden: 0;
+$width-wallet-sidebar: 28.5rem;
+
+//margin
+$margin-input-field: 27px;
+
+//bg
+$bg-main: rgb(243, 245, 246);
+
+// template
+$width-banner-slide: 85%;
+$pd-slide: 20px;
+
+// time
+$time-slide: 9s

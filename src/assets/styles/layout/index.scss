@@ -1,0 +1,11 @@
+@import "layout_auth";
+@import "layout_default";
+@import "header";
+
+.dropdown-language {
+  @apply py-2.5;
+
+  .el-dropdown-menu__item {
+    @apply p-2;
+  }
+}

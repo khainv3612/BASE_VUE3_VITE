@@ -1,0 +1,41 @@
+//form
+
+.el-form-item.is-required:not(.is-no-asterisk) .el-form-item__label-wrap > .el-form-item__label:before, .el-form-item.is-required:not(.is-no-asterisk) > .el-form-item__label:before {
+  @apply hidden
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+//el-form-item__content .el-input__inner {
+//  height: $height-input !important;
+//}
+//
+//.el-form-item__error {
+//  color: $color-red-2 !important;
+//  font-weight: 500;
+//  font-size: 13px;
+//  line-height: 18px;
+//}
+//
+//input.el-input__inner {
+//  font-size: inherit;
+//  height: var(--el-input-inner-height);
+//  line-height: var(--el-input-inner-height);
+//  padding: $padding-input-inner;
+//  box-sizing: border-box;
+//}
+//
+//.el-form-item {
+//  margin-bottom: $margin-input-field !important;
+//}
+//
+//.el-dropdown-menu__item:not(.is-disabled):focus {
+//  background-color: $color-el-dropdown-hover !important;
+//  color: $color-black !important;
+//}
+

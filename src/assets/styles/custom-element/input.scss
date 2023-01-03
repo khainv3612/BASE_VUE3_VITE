@@ -1,0 +1,30 @@
+.label {
+  @apply text-body-02 pb-1;
+}
+
+.star_req {
+  @apply text-support-danger ml-0.5
+}
+.el-form-item__error{
+  @apply text-support-danger #{!important};
+}
+.input-password {
+  @apply relative
+}
+.show-pwd{
+  @apply absolute right-2
+}
+.el-input {
+  .el-input__inner {
+    @apply h-size-input #{!important};
+  }
+  .el-input__wrapper.is-focus {
+      @apply shadow-input #{!important};
+    }
+  }
+.el-textarea__inner:focus {
+  @apply shadow-input #{!important};
+}
+.el-select .el-input.is-focus .el-input__wrapper{
+  @apply shadow-none #{ !important};
+}
