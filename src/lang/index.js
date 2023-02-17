@@ -4,23 +4,23 @@ import enLocale from '@/lang/en.js'
 import Cookies from 'js-cookie'
 
 const messages = {
-  en: { ...enLocale },
-  vi: { ...viLocale },
+	en: { ...enLocale },
+	vi: { ...viLocale },
 }
 
 export function getLanguage() {
-  const chooseLanguage = Cookies.get('language')
-  if (chooseLanguage) {
-    return chooseLanguage
-  } else return 'vi'
+	const chooseLanguage = Cookies.get('language')
+	if (chooseLanguage) {
+		return chooseLanguage
+	} else return 'vi'
 }
 
 const i18n = createI18n({
-  locale: getLanguage(),
-  messages,
-  globalInjection: true,
-  fallbackLocale: 'vi',
-  legacy: false
+	locale: getLanguage(),
+	messages,
+	globalInjection: true,
+	fallbackLocale: 'vi',
+	legacy: false,
 })
 
 export default i18n

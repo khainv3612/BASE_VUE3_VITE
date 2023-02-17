@@ -4,11 +4,11 @@
  * @param route
  */
 export function hasPermission(roles, route) {
-  if (route.meta && route.meta.roles) {
-    return roles.some((role) => route.meta?.roles?.includes(role))
-  } else {
-    return true
-  }
+	if (route.meta && route.meta.roles) {
+		return roles.some((role) => route.meta?.roles?.includes(role))
+	} else {
+		return true
+	}
 }
 
 /**
@@ -17,18 +17,18 @@ export function hasPermission(roles, route) {
  * @param roles
  */
 export function filterAsyncRoutes(routes, roles) {
-  const res = []
-  routes.forEach((route) => {
-    const tmp = { ...route }
-    if (hasPermission(roles, tmp)) {
-      if (tmp.children) {
-        tmp.children = filterAsyncRoutes(tmp.children, roles)
-      }
-      res.push(tmp)
-    }
-  })
+	const res = []
+	routes.forEach((route) => {
+		const tmp = { ...route }
+		if (hasPermission(roles, tmp)) {
+			if (tmp.children) {
+				tmp.children = filterAsyncRoutes(tmp.children, roles)
+			}
+			res.push(tmp)
+		}
+	})
 
-  return res
+	return res
 }
 
 /**
@@ -37,11 +37,11 @@ export function filterAsyncRoutes(routes, roles) {
  * @param routeItem
  */
 export function hasCodePermission(codeArr, routeItem) {
-  if (routeItem.meta && routeItem.meta.code) {
-    return codeArr.includes(routeItem.meta.code) || routeItem.hidden
-  } else {
-    return true
-  }
+	if (routeItem.meta && routeItem.meta.code) {
+		return codeArr.includes(routeItem.meta.code) || routeItem.hidden
+	} else {
+		return true
+	}
 }
 
 /**
@@ -50,16 +50,19 @@ export function hasCodePermission(codeArr, routeItem) {
  * @param asyncRoutes
  */
 export function filterRouterByCodeArr(codeArr, asyncRoutes) {
-  return new Promise((resolve) => {
-    const filterRouter = []
-    asyncRoutes.forEach(async(routeItem) => {
-      if (hasCodePermission(codeArr, routeItem)) {
-        if (routeItem.children) {
-          routeItem.children = await filterRouterByCodeArr(codeArr, routeItem.children)
-        }
-        filterRouter.push(routeItem)
-      }
-    })
-    resolve(filterRouter)
-  })
+	return new Promise((resolve) => {
+		const filterRouter = []
+		asyncRoutes.forEach(async (routeItem) => {
+			if (hasCodePermission(codeArr, routeItem)) {
+				if (routeItem.children) {
+					routeItem.children = await filterRouterByCodeArr(
+						codeArr,
+						routeItem.children
+					)
+				}
+				filterRouter.push(routeItem)
+			}
+		})
+		resolve(filterRouter)
+	})
 }

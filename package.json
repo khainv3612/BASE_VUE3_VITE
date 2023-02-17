@@ -1,121 +1,125 @@
 {
-  "name": "fe-base-amaisoft",
-  "private": true,
-  "version": "1.0.0",
-  "author": "tuhm & khainv",
-  "scripts": {
-    "i": "pnpm install",
-    "dev": "vite --host",
-    "build": "vite build",
-    "preview": "vite build && vite preview",
-    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
-    "lint:style": "stylelint \"**/*.{css,scss,sass,html,vue}\" --ignore-path .gitignore",
-    "lint": "eslint --ext .js,.vue src --fix",
-    "lintfix": "prettier --write --list-different . && yarn lint:js --fix && yarn lint:style --fix",
-    "prepare": "husky install"
-  },
-  "dependencies": {
-    "@babel/core": "^7.19.3",
-    "@babel/eslint-parser": "^7.19.1",
-    "@element-plus/icons-vue": "^2.0.10",
-    "@types/node": "^18.8.5",
-    "@vueuse/head": "^0.9.8",
-    "axios": "^1.1.3",
-    "babel-eslint": "^10.1.0",
-    "echarts": "^5.4.0",
-    "element-plus": "^2.2.17",
-    "http-status": "^1.5.3",
-    "js-cookie": "^3.0.1",
-    "lodash": "^4.17.21",
-    "moment": "^2.29.4",
-    "nprogress": "0.2.0",
-    "pinia": "^2.0.23",
-    "postcss-import": "^15.0.0",
-    "stylelint-config-recommended-scss": "^7.0.0",
-    "stylelint-config-standard-scss": "^5.0.0",
-    "unplugin-auto-import": "^0.11.2",
-    "unplugin-vue-components": "^0.19.5",
-    "vue": "^3.2.41",
-    "vue-i18n": "^9.2.2",
-    "vue-recaptcha": "^2.0.3",
-    "vue-router": "4.1.5",
-    "vue-template-compiler": "^2.7.10"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^17.1.2",
-    "@commitlint/config-conventional": "^15.0.0",
-    "@vitejs/plugin-vue": "^3.1.2",
-    "autoprefixer": "^10.4.12",
-    "eslint": "8.22.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-html": "^7.0.0",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-n": "^15.0.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-vue": "^9.2.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "postcss": "^8.4.17",
-    "postcss-html": "^1.5.0",
-    "prettier": "^2.7.1",
-    "sass": "^1.55.0",
-    "sass-loader": "13.1.0",
-    "tailwindcss": "^3.1.8",
-    "vite": "^3.1.8",
-    "vite-plugin-pwa": "^0.13.1",
-    "workbox-precaching": "^6.5.4"
-  },
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "html-webpack-plugin",
-        "vite-plugin-mock",
-        "unplugin-auto-import",
-        "unplugin-vue-components",
-        "vue-template-compiler",
-        "tailwindcss",
-        "unplugin",
-        "vite-plugin-mock",
-        "@vitejs/plugin-legacy",
-        "@vitejs/plugin-vue",
-        "@vitejs/*",
-        "@babel/*",
-        "vite",
-        "vue",
-        "rollup",
-        "vue-jest",
-        "@babel/*",
-        "vite-plugin-pwa",
-        "workbox-precaching"
-      ]
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "not ie 11",
-    "not op_mini all"
-  ],
-  "engines": {
-    "pnpm": ">= 6 <8"
-  },
-  "lint-staged": {
-    "*.{js,vue}": "eslint --cache",
-    "*.{css,scss,sass,html,vue}": "stylelint",
-    "src/**/*.{js,vue}": [
-      "eslint --fix",
-      "git add"
-    ],
-    "**/*.{js,vue}": [
-      "prettier src  --write",
-      "eslint --ext \"**/*.{js,vue}\" --ignore-path .gitignore --fix",
-      "eslint --cache"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  }
+	"name": "fe-base",
+	"private": true,
+	"version": "1.0.0",
+	"author": "khainv",
+	"scripts": {
+		"i": "pnpm install",
+		"dev": "vite --host",
+		"build": "vite build",
+		"preview": "vite build && vite preview",
+		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore --ignore-path .eslintignore",
+		"lint:prettier": "prettier --write  'src/**/*.{js,ts,jsx,tsx,css,less,scss,vue,html,md}'",
+		"lint:stylelint": "stylelint --cache --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
+		"lint:lint-staged": "lint-staged",
+		"prepare": "husky install"
+	},
+	"dependencies": {
+		"@babel/core": "^7.19.3",
+		"@babel/eslint-parser": "^7.19.1",
+		"@element-plus/icons-vue": "^2.0.10",
+		"@types/node": "^18.8.5",
+		"@vueuse/head": "^0.9.8",
+		"axios": "^1.1.3",
+		"babel-eslint": "^10.1.0",
+		"echarts": "^5.4.0",
+		"element-plus": "^2.2.17",
+		"http-status": "^1.5.3",
+		"js-cookie": "^3.0.1",
+		"lodash": "^4.17.21",
+		"moment": "^2.29.4",
+		"nprogress": "0.2.0",
+		"pinia": "^2.0.23",
+		"postcss-import": "^15.0.0",
+		"stylelint-config-recommended-scss": "^7.0.0",
+		"stylelint-config-standard-scss": "^5.0.0",
+		"unplugin-auto-import": "^0.11.2",
+		"unplugin-vue-components": "^0.19.5",
+		"vue": "^3.2.41",
+		"vue-i18n": "^9.2.2",
+		"vue-recaptcha": "^2.0.3",
+		"vue-router": "4.1.5",
+		"vue-template-compiler": "^2.7.10"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^17.1.2",
+		"@commitlint/config-conventional": "^15.0.0",
+		"@vitejs/plugin-vue": "^3.1.2",
+		"autoprefixer": "^10.4.12",
+		"eslint": "^8.34.0",
+		"eslint-config-prettier": "^8.6.0",
+		"eslint-config-standard": "^17.0.0",
+		"eslint-plugin-html": "^7.0.0",
+		"eslint-plugin-import": "^2.25.2",
+		"eslint-plugin-n": "^15.0.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-promise": "^6.0.0",
+		"eslint-plugin-vue": "^9.9.0",
+		"husky": "^8.0.3",
+		"lint-staged": "^13.1.2",
+		"postcss": "^8.4.17",
+		"postcss-html": "^1.5.0",
+		"prettier": "^2.8.4",
+		"sass": "^1.55.0",
+		"sass-loader": "13.1.0",
+		"stylelint": "^15.1.0",
+		"stylelint-config-prettier": "^9.0.5",
+		"stylelint-config-standard": "^30.0.1",
+		"tailwindcss": "^3.1.8",
+		"vite": "^3.1.8",
+		"vite-plugin-pwa": "^0.13.1",
+		"workbox-precaching": "^6.5.4"
+	},
+	"pnpm": {
+		"peerDependencyRules": {
+			"ignoreMissing": [
+				"html-webpack-plugin",
+				"vite-plugin-mock",
+				"unplugin-auto-import",
+				"unplugin-vue-components",
+				"vue-template-compiler",
+				"tailwindcss",
+				"unplugin",
+				"vite-plugin-mock",
+				"@vitejs/plugin-legacy",
+				"@vitejs/plugin-vue",
+				"@vitejs/*",
+				"@babel/*",
+				"vite",
+				"vue",
+				"rollup",
+				"vue-jest",
+				"@babel/*",
+				"vite-plugin-pwa",
+				"workbox-precaching"
+			]
+		}
+	},
+	"engines": {
+		"pnpm": ">= 6 <8"
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx,vue,html}": [
+			"eslint . --ext .vue,.js,.jsx,.ts,.tsx,.html --fix --ignore-path .gitignore --ignore-path .eslintignore",
+			"prettier --write  'src/**/*.{js,ts,jsx,tsx,css,less,scss,vue,html,md}'"
+		],
+		"*.{scss,less}": [
+			"prettier --write  'src/**/*.{js,ts,jsx,tsx,css,less,scss,vue,html,md}'",
+			"stylelint --cache --fix \"**/*.{less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/"
+		],
+		"{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
+			"prettier --write"
+		],
+		"package.json": [
+			"prettier --write"
+		],
+		"*.md": [
+			"prettier --write"
+		]
+	},
+	"browserslist": [
+		"> 1%",
+		"not ie 11",
+		"not op_mini all"
+	]
 }

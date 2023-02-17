@@ -1,15 +1,18 @@
 //form
 
-.el-form-item.is-required:not(.is-no-asterisk) .el-form-item__label-wrap > .el-form-item__label:before, .el-form-item.is-required:not(.is-no-asterisk) > .el-form-item__label:before {
-  @apply hidden
+.el-form-item.is-required:not(.is-no-asterisk)
+	.el-form-item__label-wrap
+	> .el-form-item__label:before,
+.el-form-item.is-required:not(.is-no-asterisk) > .el-form-item__label:before {
+	@apply hidden;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  margin: 0;
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	margin: 0;
 }
 //el-form-item__content .el-input__inner {
 //  height: $height-input !important;
@@ -38,4 +41,3 @@ input[type=number]::-webkit-outer-spin-button {
 //  background-color: $color-el-dropdown-hover !important;
 //  color: $color-black !important;
 //}
-

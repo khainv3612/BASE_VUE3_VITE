@@ -1,11 +1,11 @@
 .dialog_common {
-  @apply rounded-xl
+	@apply rounded-xl;
 }
 
 .el-dialog__title {
-  @apply font-bold text-2xl #{!important}
+	@apply font-bold text-2xl #{!important};
 }
 
 .close_div {
-  @apply text-right pt-5
+	@apply text-right pt-5;
 }

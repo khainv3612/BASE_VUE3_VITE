@@ -70,6 +70,7 @@ typings/
 
 # Nuxt generate
 dist
+.output
 
 # vuepress build output
 .vuepress/dist
@@ -79,6 +80,7 @@ dist
 
 # IDE / Editor
 .idea
+.vscode
 
 # Service worker
 sw.*
@@ -91,5 +93,5 @@ sw.*
 
 .history
 *.local
-yarn*
-pnpm*
+
+pnpm-lock.yaml

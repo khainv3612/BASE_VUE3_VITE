@@ -47,18 +47,18 @@ export const TYPE_WARRING = 'warning'
 export const TYPE_INFO = 'info'
 
 export const LST_LANGUAGE = [
-  {
-    id: 1,
-    name: 'English',
-    lang: 'en',
-    icon: getImg('english.svg'),
-  },
-  {
-    id: 2,
-    name: 'Tiếng Việt',
-    lang: 'vi',
-    icon: getImg('vietnam.svg'),
-  },
+	{
+		id: 1,
+		name: 'English',
+		lang: 'en',
+		icon: getImg('english.svg'),
+	},
+	{
+		id: 2,
+		name: 'Tiếng Việt',
+		lang: 'vi',
+		icon: getImg('vietnam.svg'),
+	},
 ]
 
 export const TIME_SHOW_NOTIFICATION = 3000

@@ -1,13 +1,13 @@
 <template>
-  <div v-permission="['admin']" style='color: red'>Only admins have access</div>
+	<div v-permission="['admin']" style="color: red">
+		Only admins have access
+	</div>
 </template>
 
 <script>
-  export default {
-    name: 'AdminExampleComponent',
-  }
+	export default {
+		name: 'AdminExampleComponent',
+	}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

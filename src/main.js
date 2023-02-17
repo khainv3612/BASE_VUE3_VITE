@@ -23,7 +23,7 @@ import './pwa/useServiceWorker'
 // import { clearCache } from "@/services/cacheService"
 
 if ('serviceWorker' in navigator) {
-  registerSW()
+	registerSW()
 }
 
 const app = createApp(App)
@@ -33,7 +33,7 @@ app.use(createPinia())
 // add lang
 app.use(i18n)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-  app.component(key, component)
+	app.component(key, component)
 }
 
 app.use(index)
