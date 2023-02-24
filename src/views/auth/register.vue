@@ -101,7 +101,7 @@
 	import { computed, reactive, ref } from 'vue'
 	import * as authService from '@/services/authService'
 	import * as loadingService from '@/services/loadingService'
-	import * as notiService from '@/services/notiService'
+	import notificationService from '@/services/notiService'
 	import router from '@/router'
 	import { resetErrorResponse } from '@/utils/validateServerError'
 	import { KEY_CAPTCHA } from '@/constants'
@@ -171,13 +171,17 @@
 						}
 						step.value = 2
 						loadingService.stopLoading()
-						await notiService.setNotifySuccess(
+						await notificationService.setSuccessNotification(
 							trans('noti.register_success')
 						)
 					} else if (response.status_code === 422) {
 						errorResponse.value = response.error_response
 					}
-				} catch (response) {}
+				} catch (response) {
+					await notificationService.setErrorNotification(
+						response.message
+					)
+				}
 				loadingService.stopLoading()
 			} else {
 				return false

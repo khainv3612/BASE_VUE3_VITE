@@ -40,84 +40,27 @@
 	import appStore from '@/store/app'
 	import { storeToRefs } from 'pinia'
 	import { TIME_SHOW_NOTIFICATION } from '@/constants'
+	import notificationService from '@/services/notiService'
 
-	const notiStore = appStore()
-	const notification = ref({})
 	const timeHide = ref(TIME_SHOW_NOTIFICATION)
 	const timeOut = ref(null)
-	const { notifySuccess, notifyInfo, notifyWarning, notifyError } =
-		storeToRefs(appStore())
-	watch([notifyInfo, notifySuccess, notifyWarning, notifyError], () => {
-		if (notifyInfo.value.title) {
-			close()
-			notification.value = {
-				...notifyInfo.value,
-				type: 'info',
-				image: `/icons/info.svg`,
-			}
-			notiStore.setNotifyInfo({ title: '', message: '', show: false })
-			timeOut.value = setTimeout(
-				() => (notification.value.show = false),
-				timeHide.value
-			)
-		}
-		if (notifyError.value.title) {
-			close()
-			notification.value = {
-				...notifyError.value,
-				type: 'error',
-				image: `/icons/error.svg`,
-			}
-			notiStore.setNotifyError({
-				title: '',
-				message: '',
-				show: false,
-			})
-			timeOut.value = setTimeout(
-				() => (notification.value.show = false),
-				timeHide.value
-			)
-		}
-		if (notifyWarning.value.title) {
-			close()
-			notification.value = {
-				...notifyWarning.value,
-				type: 'warning',
-				image: `/icons/warning.svg`,
-			}
-			notiStore.setNotifyWarning({
-				title: '',
-				message: '',
-				show: false,
-			})
-			timeOut.value = setTimeout(
-				() => (notification.value.show = false),
-				timeHide.value
-			)
-		}
-		if (notifySuccess.value.title) {
-			close()
-			notification.value = {
-				...notifySuccess.value,
-				type: 'success',
-				image: '/icons/success.svg',
-			}
-			notiStore.setNotifySuccess({
-				title: '',
-				message: '',
-				show: false,
-			})
-			timeOut.value = setTimeout(
-				() => (notification.value.show = false),
-				timeHide.value
-			)
-		}
+	const { notification } = storeToRefs(appStore())
+	const close = () => {
+		clearTimeout(timeOut)
+		notificationService.setNotification({ show: false })
+	}
+	watch([notification], () => {
+		clearTimeout(timeOut.value)
+		configTimeOut()
 	})
 	onBeforeUnmount(() => {
 		clearTimeout(timeOut)
 	})
-	const close = () => {
-		clearTimeout(timeOut)
-		notification.value.show = false
+
+	const configTimeOut = () => {
+		timeOut.value = setTimeout(
+			() => notificationService.setNotification({ show: false }),
+			timeHide.value
+		)
 	}
 </script>

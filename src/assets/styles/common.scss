@@ -14,3 +14,16 @@ body {
 	//font-family: $font-root;
 	font-feature-settings: 'pnum' on, 'lnum' on;
 }
+
+.break-w-100 {
+	word-break: break-word;
+	@apply max-w-full;
+}
+
+.stroke_text {
+	letter-spacing: 1px;
+	font-feature-settings: 'pnum' on, 'lnum' on;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke: 2px;
+	-webkit-text-stroke-color: var(--color-brand-primary-default);
+}

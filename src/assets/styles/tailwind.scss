@@ -6,11 +6,15 @@
 :root,
 #root,
 #docs-root {
-	--color-emerald-700: #13926e;
+	--color-emerald-700: #1a5bda;
+	--color-emerald-600: #1a5bda;
+	--color-brand-primary-default: #1a5bda;
+	--color-hover-btn-primary: #1766ff;
 	--color-emerald-500: #47b475;
 	--color-emerald-50: #caead7;
 	--color-green-500: #22c55e;
 	--color-gray-800: #1f2937;
+	--color-gray-600: #424242;
 	--color-gray-500: #6b7280;
 	--color-gray-400: #9ca3af;
 	--color-gray-300: #d1d5db;
@@ -21,6 +25,8 @@
 	--color-red-500: #ef4444;
 	--color-red-200: #fecaca;
 	--color-blue-500: #3b82f6;
+	--color-light: #636363;
+	--color-disabled-btn-primary: #a3c2ff;
 	//size
 	--font-size-6xl: 64px;
 	--font-size-5xl: 48px;
@@ -33,6 +39,7 @@
 	--font-size-base: 14px;
 	--font-size-s: 12px;
 	--font-size-xs: 10px;
+	--font-size-7: 36px;
 	//bold
 	--font-weight-xl: 700;
 	--font-weight-l: 600;
@@ -41,6 +48,7 @@
 	//line-height
 	--font-height-base: 1.2;
 	--font-height-150: 1.5;
+	--font-height-100: 1;
 	--font-height-custom: 22px;
 	//font- style
 	--font-style-normal: Normal;
@@ -58,6 +66,16 @@
 	--radius-rounded-m: 5px;
 	--radius-rounded-s: 3px;
 	--radius-sharp: 0;
+
+	// width
+	--width-header: 1366px;
+	--max-width-header: 1432px;
+	--width-sub-content: 1432px;
+	--max-width-sub-content: 1432px;
+
+	// height
+	--height-header: 128px;
+	--height-header-mobile: 72px;
 }
 @layer base {
 	h1 {

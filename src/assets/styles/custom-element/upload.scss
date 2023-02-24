@@ -1,0 +1,21 @@
+.upload-feedbacks {
+	> ul.el-upload-list {
+		@apply grid grid-cols-3 gap-x-2;
+
+		> .el-upload-list__item {
+			@apply w-[140px] h-[140px] m-0;
+		}
+
+		> .el-upload {
+			@apply w-[140px] h-[140px] m-0;
+		}
+	}
+
+	&.maximum-images {
+		> ul.el-upload-list {
+			> .el-upload {
+				@apply hidden;
+			}
+		}
+	}
+}

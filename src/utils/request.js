@@ -10,8 +10,9 @@ import {
 	CODE_403,
 	CODE_500,
 	ERROR_PAGE_PATH,
+	LANGUAGE_DEFAULT,
 } from '@/constants'
-import { setNotifyError, setNotifySuccess } from '@/services/notiService'
+import notificationService from '@/services/notiService'
 
 let reqConfig
 
@@ -20,7 +21,9 @@ const service = axios.create({
 })
 service.interceptors.request.use(
 	(config) => {
-		config.headers['X-LANG'] = getLanguage() ? getLanguage() : 'vi'
+		config.headers['X-LANG'] = getLanguage()
+			? getLanguage()
+			: LANGUAGE_DEFAULT
 		if (getToken()) {
 			config.headers.Authorization = 'Bearer ' + getToken()
 		}
@@ -79,12 +82,12 @@ service.interceptors.response.use(
 		}
 		if (statusCode === 200 || statusCode === 422 || statusCode === 401) {
 			if (reqConfig.isAlertErrorMsg && statusCode === 200) {
-				setNotifySuccess(response.message)
+				notificationService.setSuccessNotification(response.message)
 			}
 			return res
 		} else {
 			if (reqConfig.isAlertErrorMsg) {
-				setNotifyError(response.message)
+				notificationService.setErrorNotification(response.message)
 			}
 			if (statusCode.toString().startsWith('5'))
 				appStore().setErrorCode(CODE_500)
@@ -94,7 +97,7 @@ service.interceptors.response.use(
 	},
 	async (error) => {
 		if (reqConfig.isAlertErrorMsg) {
-			setNotifyError(error.message)
+			notificationService.setErrorNotification(error.message)
 		}
 		appStore().setErrorCode(CODE_500)
 		await router.push({ path: ERROR_PAGE_PATH })

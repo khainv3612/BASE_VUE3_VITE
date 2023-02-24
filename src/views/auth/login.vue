@@ -161,7 +161,7 @@
 	import { computed, nextTick, ref, watch } from 'vue'
 	import * as authService from '@/services/authService'
 	import * as loadingService from '@/services/loadingService'
-	import * as notiService from '@/services/notiService'
+	import notificationService from '@/services/notiService'
 	import router from '@/router'
 	import { resetErrorResponse } from '@/utils/validateServerError'
 	import { VueRecaptcha } from 'vue-recaptcha'
@@ -274,13 +274,15 @@
 						await router.push({
 							path: '/',
 						})
-						await notiService.setNotifySuccess(
+						await notificationService.setSuccessNotification(
 							trans('noti.login_success')
 						)
 					} else if (response.status_code === 422) {
 						errorResponse.value = response.error_response
 					} else if (response.status_code === 401) {
-						notiService.setNotifyError(response.message)
+						notificationService.setErrorNotification(
+							response.message
+						)
 					}
 				} catch (response) {}
 				loadingService.stopLoading()
@@ -300,10 +302,14 @@
 					)
 					if (response.status_code === 200) {
 						isForgotPassword.value = false
-						notiService.setNotifySuccess(response.message)
+						notificationService.setSuccessNotification(
+							response.message
+						)
 					} else {
 						errorResponse.value = response.error_response
-						notiService.setNotifyError(response.message)
+						notificationService.setErrorNotification(
+							response.message
+						)
 					}
 					loadingService.stopLoading()
 				} catch (response) {

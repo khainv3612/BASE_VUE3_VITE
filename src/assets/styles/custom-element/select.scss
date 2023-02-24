@@ -1,0 +1,15 @@
+.list-creator {
+	li {
+		@apply h-[48px] flex items-center;
+	}
+}
+.el-select-dropdown__item.selected {
+	@apply text-brand-primary #{!important};
+}
+.el-select-dropdown__item.hover,
+.el-select-dropdown__item:hover {
+	@apply bg-bg-01 #{!important};
+}
+.el-select-dropdown__item.selected .text-select-name {
+	@apply text-brand-primary font-xl  #{!important};
+}

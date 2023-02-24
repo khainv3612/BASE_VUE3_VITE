@@ -1,40 +1,41 @@
-import appStore from '~/store/app'
-import { trans } from '~/utils/language'
+import appStore from '@/store/app'
 
-// const loadingStore = appStore()
-
-export function setNotifySuccess(message, title) {
-	if (!title) title = trans('noti.success')
-	appStore().setNotifySuccess({
-		title,
-		message,
-		show: true,
-	})
+const notificationService = {
+	setNotification(data) {
+		appStore().setNotification(data)
+	},
+	setSuccessNotification(msg) {
+		appStore().setNotification({
+			show: true,
+			type: 'success',
+			title: '',
+			message: msg,
+		})
+	},
+	setWarningNotification(msg) {
+		appStore().setNotification({
+			show: true,
+			type: 'warning',
+			title: '',
+			message: msg,
+		})
+	},
+	setErrorNotification(msg) {
+		appStore().setNotification({
+			show: true,
+			type: 'error',
+			title: '',
+			message: msg,
+		})
+	},
+	setInfoNotification(msg) {
+		appStore().setNotification({
+			show: true,
+			type: 'info',
+			title: '',
+			message: msg,
+		})
+	},
 }
 
-export function setNotifyError(message, title) {
-	if (!title) title = trans('noti.error')
-	appStore().setNotifyError({
-		title,
-		message,
-		show: true,
-	})
-}
-
-export function setNotifyInfo(message, title) {
-	if (!title) title = trans('noti.note')
-	appStore().setNotifyInfo({
-		title,
-		message,
-		show: true,
-	})
-}
-
-export function setNotifyWarning(message, title) {
-	if (!title) title = trans('noti.note')
-	appStore().setNotifyWarning({
-		title,
-		message,
-		show: true,
-	})
-}
+export default notificationService

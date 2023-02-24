@@ -1,4 +1,17 @@
 .el-date-editor.el-input,
 .el-date-editor.el-input__wrapper {
 	@apply h-size-input #{ !important};
+	input {
+		@apply h-size-input #{ !important};
+	}
+}
+.el-date-range-picker__header {
+	.el-picker-panel__icon-btn {
+		margin-top: 2.5px !important;
+	}
+}
+.el-date-picker__header {
+	.el-picker-panel__icon-btn {
+		margin-top: 0.5px !important;
+	}
 }

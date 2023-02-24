@@ -14,6 +14,7 @@
 			:maxlength="maxlength"
 			:minlength="minlength"
 			:show-word-limit="showLimit"
+			resize="none"
 			clearable
 			@blur="checkFieldValidate(nameRef, ruleFormRef, status)"
 			@focus="resetValidateField(nameRef, ruleFormRef)"
@@ -42,7 +43,13 @@
 	watch(value, () => {
 		emits('update:model', value.value)
 	})
-
+	watch(model, () => {
+		if (!model.value || model.value.toString().trim().length === 0) {
+			value.value = ''
+		} else {
+			value.value = model.value.trimStart()
+		}
+	})
 	watch(rules, () => {
 		if (status.valid) {
 			setTimeout(() => {

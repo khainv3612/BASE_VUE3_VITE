@@ -14,19 +14,19 @@
 </template>
 
 <script setup>
-	import * as notiService from '@/services/notiService'
+	import notificationService from '@/services/notiService'
 	import { trans } from '@/utils/language'
 
 	const handleNotiSuccess = () => {
-		notiService.setNotifySuccess(trans('noti.ok'))
+		notificationService.setSuccessNotification(trans('noti.ok'))
 	}
 	const handleNotiError = () => {
-		notiService.setNotifyError(trans('noti.ok'))
+		notificationService.setErrorNotification(trans('noti.ok'))
 	}
 	const handleNotiInfo = () => {
-		notiService.setNotifyInfo(trans('noti.ok'))
+		notificationService.setInfoNotification(trans('noti.ok'))
 	}
 	const handleNotiWarrning = () => {
-		notiService.setNotifyWarning(trans('noti.ok'))
+		notificationService.setWarningNotification(trans('noti.ok'))
 	}
 </script>

@@ -9,7 +9,7 @@
 		:loading="loading"
 		:disabled="disabled"
 		:readonly="readonly"
-		@click.stop="$emit('submit')"
+		@click.prevent="$emit('submit')"
 	>
 		<img
 			v-if="iconLeft"

@@ -90,7 +90,7 @@
 	import { computed, reactive, ref } from 'vue'
 	import { startLoading, stopLoading } from '@/services/loadingService'
 	import * as authService from '@/services/authService'
-	import * as notiService from '@/services/notiService'
+	import notificationService from '@/services/notiService'
 	import { trans } from '@/utils/language'
 	import router from '@/router'
 
@@ -247,7 +247,7 @@
 			switch (data.status_code) {
 				case 200:
 					tokenLocal.value = data.data.token
-					notiService.setNotifySuccess(data.message)
+					notificationService.setSuccessNotification(data.message)
 					setTimeout(() => {
 						isResendOtp.value = false
 						isExpire.value = false
@@ -255,14 +255,13 @@
 					}, 1000)
 					break
 				default:
-					notiService.setNotifyError({
-						show: true,
-						text: data.message,
-					})
+					notificationService.setErrorNotification(data.message)
 					break
 			}
 		} catch (err) {
-			notiService.setNotifyError(trans('message.message_error'))
+			notificationService.setErrorNotification(
+				trans('message.message_error')
+			)
 		}
 		stopLoading()
 	}
@@ -284,13 +283,15 @@
 						token: tokenLocal.value,
 					})
 					if (data.status_code === 200) {
-						notiService.setNotifySuccess(data.message)
+						notificationService.setSuccessNotification(data.message)
 						await router.push('/login')
 					} else {
-						notiService.setNotifyError(data.message)
+						notificationService.setErrorNotification(data.message)
 					}
 				} catch (err) {
-					notiService.setNotifyError(trans('message.message_error'))
+					notificationService.setErrorNotification(
+						trans('message.message_error')
+					)
 				}
 				await stopLoading()
 			}

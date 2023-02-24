@@ -1,12 +1,17 @@
-.label {
-	@apply text-body-02 pb-1;
+input,
+textarea {
+	&::placeholder {
+		@apply text-body-m text-color-input-default;
+	}
 }
 
-.star_req {
-	@apply text-support-danger ml-0.5;
+textarea {
+	min-height: $height-textarea !important;
+	height: $height-textarea !important;
+	@apply text-body-m #{!important};
 }
 .el-form-item__error {
-	@apply text-support-danger #{!important};
+	@apply text-error text-support-danger #{!important};
 }
 .input-password {
 	@apply relative;
@@ -16,15 +21,31 @@
 }
 .el-input {
 	.el-input__inner {
-		@apply h-size-input #{!important};
-	}
-	.el-input__wrapper.is-focus {
-		@apply shadow-input #{!important};
+		min-height: 40px !important;
+		@apply text-body-m;
 	}
 }
-.el-textarea__inner:focus {
-	@apply shadow-input #{!important};
+.el-input__wrapper {
+	@apply px-3 py-0  rounded-md border-color-border-01 #{!important};
 }
-.el-select .el-input.is-focus .el-input__wrapper {
-	@apply shadow-none #{ !important};
+//.el-select .el-input.is-focus .el-input__wrapper{
+//  @apply shadow-input #{ !important};
+//}
+//.input-button-icon {
+//  //box-shadow: none !important;
+//  @apply pl-4 #{!important};
+//}
+.input-button-icon {
+	.el-input__inner {
+		@apply pl-6 #{!important};
+	}
+}
+.search-blogs-filter {
+	@apply pb-0 #{!important};
+}
+.search-blogs {
+	width: 317px !important;
+}
+.el-textarea > textarea.el-textarea__inner {
+	@apply h-full p-2 #{!important};
 }

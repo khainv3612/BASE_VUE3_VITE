@@ -1,11 +1,94 @@
 .dialog_common {
-	@apply rounded-xl;
+	@apply rounded-xl bg-bg-02;
+	.el-dialog__footer {
+		@apply p-0 #{!important};
+	}
 }
 
 .el-dialog__title {
-	@apply font-bold text-2xl #{!important};
+	@apply text-heading-04 #{!important};
 }
 
 .close_div {
 	@apply text-right pt-5;
+}
+.el-dialog {
+	@apply shadow-shadow-1 rounded-m  #{!important};
+	&__header {
+		@apply mr-0 #{!important};
+		&__title {
+			@apply text-heading-04 text-color-dark  #{!important};
+		}
+	}
+	&__footer {
+		@apply pb-3 px-3 pt-0 #{!important};
+		.el-button {
+			line-height: 40px !important;
+			@apply h-size-input focus:outline-none
+      visited:outline-none #{!important};
+		}
+	}
+}
+.dialog-large {
+	.el-dialog {
+		&__header {
+			@apply p-6 mr-0 #{!important};
+		}
+		&__body {
+			@apply pt-0 px-6 pb-6 #{!important};
+		}
+	}
+}
+.dialog-small {
+	.el-dialog {
+		&__header {
+			@apply p-3 #{!important};
+		}
+		&__body {
+			@apply p-3 #{!important};
+		}
+	}
+}
+
+.el-dialog__header {
+	@apply pb-0 #{!important};
+}
+
+//.el-dialog{
+//  @apply shadow-shadow-1 rounded-m  #{!important};
+//  &__header {
+//    @apply p-3  mr-0 #{!important};
+//    &__title{
+//      @apply text-heading-04 text-color-dark  #{!important}
+//    }
+//  }
+//  &__body{
+//    @apply pb-6 pt-4 px-3 #{!important};
+//  }
+//  &__footer {
+//    @apply pb-3 px-3 pt-0 #{!important};
+//    .el-button{
+//      line-height: 40px !important;
+//      @apply h-size-input focus:outline-none
+//      visited:outline-none #{!important};
+//    }
+//  }
+//}
+
+@media (max-width: 640px) {
+	.el-dialog {
+		width: 90% !important;
+	}
+	.el-dialog__body {
+		@apply pt-4 #{!important};
+	}
+}
+
+@media (max-width: 300px) {
+	.el-dialog {
+		width: 95% !important;
+	}
+	.el-dialog__body {
+		@apply p-4 #{!important};
+	}
 }

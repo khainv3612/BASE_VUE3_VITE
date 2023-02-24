@@ -10,7 +10,7 @@
 <script setup>
 	import { startLoading, stopLoading } from '@/services/loadingService'
 	import * as authService from '@/services/authService'
-	import * as notiService from '@/services/notiService'
+	import notificationService from '@/services/notiService'
 	import { trans } from '@/utils/language'
 
 	const logOut = async () => {
@@ -18,9 +18,11 @@
 		const result = await authService.handleLogout()
 		if (result) {
 			await window.location.reload()
-			notiService.setNotifySuccess(trans('noti.logout_success'))
+			notificationService.setSuccessNotification(
+				trans('noti.logout_success')
+			)
 		} else {
-			notiService.setNotifyError(trans('noti.logout_fail'))
+			notificationService.setErrorNotification(trans('noti.logout_fail'))
 		}
 		stopLoading()
 	}

@@ -61,7 +61,7 @@
 	import * as authService from '@/services/authService'
 	import * as loadingService from '@/services/loadingService'
 	import { startLoading, stopLoading } from '@/services/loadingService'
-	import * as notiService from '@/services/notiService'
+	import notificationService from '@/services/notiService'
 	import router from '@/router'
 	import { validPassword } from '@/utils/validate'
 	import { resetErrorResponse } from '@/utils/validateServerError'
@@ -158,7 +158,7 @@
 					})
 					if (response.status_code === 200) {
 						await router.push('/')
-						await notiService.setNotifySuccess(
+						await notificationService.setSuccessNotification(
 							trans('noti.reset_pass_success')
 						)
 					} else if (response.status_code === 422) {
@@ -185,11 +185,13 @@
 				case 422:
 					break
 				default:
-					notiService.setNotifyError(data.message)
+					notificationService.setErrorNotification(data.message)
 					break
 			}
 		} catch (err) {
-			await notiService.setNotifyError(trans('message.message_error'))
+			await notificationService.setErrorNotification(
+				trans('message.message_error')
+			)
 		}
 		await stopLoading()
 	}

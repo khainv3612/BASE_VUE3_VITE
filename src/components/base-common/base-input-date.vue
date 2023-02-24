@@ -56,7 +56,6 @@
 	})
 
 	watch(rules, () => {
-		console.log(111)
 		if (status.valid) {
 			setTimeout(() => {
 				resetValidateField(nameRef.value, ruleFormRef.value)

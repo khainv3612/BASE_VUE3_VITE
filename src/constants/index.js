@@ -1,5 +1,6 @@
 import { getImg } from '@/utils/utils'
 
+export const LANGUAGE_DEFAULT = 'en'
 export const PUBLIC_LAYOUT = 'default-layout'
 export const LAYOUT_AUTH = 'auth-layout'
 export const LAYOUT_ERROR = 'error-layout'

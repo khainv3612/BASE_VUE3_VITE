@@ -1,35 +1,102 @@
 .btn-common {
-	@apply rounded-m h-size-button-01 text-button transition-all
-    focus:outline-none
-    visited:outline-none #{!important};
+	@apply rounded-full h-size-button-01 text-button transition-all flex items-center py-3 px-3
+   #{!important};
 }
 // primary
 .btn-primary {
-	@apply bg-brand-primary border-brand-primary text-color-light
-    enabled:hover:bg-hover-primary enabled:hover:border-hover-primary
-    disabled:bg-disabled-primary disabled:border-disabled-primary #{!important};
+	@apply bg-brand-primary border-brand-primary text-color-white shadow-shadow-btn-primary
+  enabled:hover:bg-hover-primary enabled:hover:border-hover-primary enabled:hover:shadow-shadow-hover-btn-primary
+  disabled:bg-disabled-primary disabled:border-disabled-primary #{!important};
 }
 // secondary
 .btn-secondary {
-	@apply bg-brand-secondary border-brand-secondary text-color-light
-    enabled:hover:bg-hover-secondary enabled:hover:border-hover-secondary
-    disabled:bg-disabled-secondary disabled:border-disabled-secondary #{!important};
+	@apply bg-brand-secondary border-brand-secondary text-color-white
+  enabled:hover:bg-hover-secondary enabled:hover:border-hover-secondary
+  disabled:bg-disabled-secondary disabled:border-disabled-secondary #{!important};
 }
 // tertiary
 .btn-tertiary {
 	@apply bg-bg-02 border-brand-primary text-brand-primary
-    enabled:hover:border-hover-primary enabled:hover:text-hover-primary
-    disabled:border-disabled-primary disabled:text-disabled-primary #{!important};
+  enabled:hover:border-hover-primary enabled:hover:text-hover-primary
+  disabled:border-disabled-primary disabled:text-disabled-primary #{!important};
 }
 // danger
 .btn-danger {
 	@apply bg-support-danger border-support-danger text-color-light
-    enabled:hover:bg-hover-danger enabled:hover:border-hover-danger
-    disabled:bg-disabled-danger disabled:border-disabled-danger #{!important};
+  enabled:hover:bg-hover-danger enabled:hover:border-hover-danger
+  disabled:bg-disabled-danger disabled:border-disabled-danger #{!important};
 }
 // ghost
 .btn-ghost {
-	@apply border-none text-brand-primary
-  enabled:hover:bg-disabled-primary enabled:hover:text-hover-primary
-  disabled:text-disabled-primary disabled:bg-transparent #{!important};
+	@apply border-none text-brand-primary bg-transparent
+enabled:hover:bg-disabled-primary enabled:hover:text-hover-primary
+disabled:text-disabled-primary disabled:bg-transparent #{!important};
+}
+// menu-tab
+.btn-menu-tab {
+	@apply border-none text-color-medium bg-transparent
+enabled:hover:text-hover-primary
+disabled:text-disabled-primary disabled:bg-transparent #{!important};
+}
+
+.btn-menu-tab-active {
+	@apply text-color-brand_primary #{!important};
+}
+
+.btn-icon-action {
+	@apply bg-bg-02 px-3 py-2 w-[24px] h-[24px]
+transition-all flex items-center
+enabled:hover:bg-disabled-primary enabled:hover:rounded-m
+focus:outline-none
+visited:outline-none #{!important};
+}
+
+.btn-icon {
+	@apply border-none bg-transparent px-3 py-2 w-[24px] h-[24px]
+transition-all flex items-center
+enabled:hover:bg-disabled-primary enabled:hover:rounded-m
+focus:outline-none
+visited:outline-none #{!important};
+	.icon-hover {
+		@apply hidden;
+	}
+	:hover {
+		.icon-default {
+			@apply hidden;
+		}
+		.icon-hover {
+			@apply block #{!important};
+		}
+	}
+}
+.el-button--small {
+	@apply rounded-s h-size-button-02 text-button transition-all flex items-center py-2 px-3
+focus:outline-none
+visited:outline-none #{!important};
+}
+//state-button
+.state-button {
+	@apply bg-transparent text-brand-secondary border-none px-2
+enabled:hover:text-hover-secondary
+disabled:bg-transparent disabled:text-disabled-secondary #{!important};
+}
+.state-button.is-active {
+	@apply text-brand-primary  #{!important};
+}
+.state-button.is-active:hover {
+	@apply text-brand-primary  #{!important};
+}
+.state-button-sm {
+	@apply bg-transparent text-brand-secondary border-none px-2
+enabled:hover:text-hover-secondary
+disabled:bg-transparent disabled:text-disabled-secondary h-8 #{!important};
+}
+.state-button-sm.is-active {
+	@apply text-brand-primary  #{!important};
+}
+.state-button-sm.is-active:hover {
+	@apply text-brand-primary  #{!important};
+}
+.btn-comment {
+	@apply w-[40px] h-[40px] #{!important};
 }

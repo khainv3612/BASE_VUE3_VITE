@@ -1,17 +1,18 @@
 <template>
 	<el-dropdown
-		class="cursor-pointer flex lang_div"
+		class="cursor-pointer flex w-24"
 		trigger="click"
 		placement="bottom-start"
 	>
-		<span class="img_lang flex">
+		<div class="img_lang flex items-center">
+			<BaseButton
+				class-extra="btn-menu-tab btn-menu-tab_language"
+				class-custom=""
+				:text="languageActive.name"
+			>
+			</BaseButton>
 			<img class="image-language" :src="languageActive.icon" alt="" />
-			<img
-				class="image-dropdown pl-1"
-				src="@/assets/images/icons/arrow_down.svg"
-				alt=""
-			/>
-		</span>
+		</div>
 		<template #dropdown>
 			<el-dropdown-menu class="dropdown-language">
 				<el-dropdown-item
@@ -39,8 +40,9 @@
 	import { useI18n } from 'vue-i18n'
 	import appStore from '@/store/app'
 	import Cookies from 'js-cookie'
-	import { LST_LANGUAGE } from '@/constants'
+	import { LST_LANGUAGE, LANGUAGE_DEFAULT } from '@/constants'
 	import { getImg } from '@/utils/utils'
+	import { getLanguage } from '@/utils/language'
 
 	const { locale } = useI18n()
 	// data
@@ -52,15 +54,16 @@
 	})
 	// mounted
 	onMounted(() => {
-		const dataLanguage = Cookies.get('language') || 'vi'
+		const dataLanguage = getLanguage() || LANGUAGE_DEFAULT
 		languageActive.value = listLanguage.find(
 			(item) => item.lang === dataLanguage
 		)
 		if (!languageActive.value) {
 			languageActive.value = listLanguage.find(
-				(item) => item.lang === 'vi'
+				(item) => item.lang === LANGUAGE_DEFAULT
 			)
 		}
+		appStore().setLanguage(dataLanguage)
 	})
 	// methods
 	const changeLanguage = (language) => {

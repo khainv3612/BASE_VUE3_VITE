@@ -9,15 +9,34 @@ import {
 	CODE_403,
 	CODE_500,
 	ERROR_PAGE_PATH,
-	TYPE_SUCCESS,
+	LANGUAGE_DEFAULT,
 } from '@/constants'
+import notificationService from '@/services/notiService'
+
+let reqConfig
 
 const service = axios.create({
 	baseURL: process.env.API_BASE,
 })
 service.interceptors.request.use(
 	(config) => {
-		config.headers['X-LANG'] = getLanguage() ? getLanguage() : 'vi'
+		config.headers['X-LANG'] = getLanguage()
+			? getLanguage()
+			: LANGUAGE_DEFAULT
+		if (config.isDownLoadFile) {
+			config.responseType = 'blob'
+		}
+		if (config.isUploadFile) {
+			config.headers['Content-Type'] = 'multipart/form-data'
+		}
+		reqConfig = config
+		if (config.isParams) {
+			config.params = config.data
+			config.data = {}
+		}
+		if (config.bfLoading) {
+			appStore().setLoading(true)
+		}
 		return config
 	},
 	(error) => {
@@ -27,6 +46,12 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
 	async (response) => {
+		if (reqConfig.bfLoading) {
+			appStore().setLoading(false)
+		}
+		if (reqConfig.isDownLoadFile) {
+			return response
+		}
 		let res = response.data
 		const statusCode = res.status_code
 		switch (statusCode) {
@@ -52,9 +77,14 @@ service.interceptors.response.use(
 				appStore().setErrorCode(CODE_500)
 		}
 		if (statusCode === 200 || statusCode === 422 || statusCode === 401) {
+			if (reqConfig.isAlertErrorMsg && statusCode === 200) {
+				notificationService.setSuccessNotification(response.message)
+			}
 			return res
 		} else {
-			appStore().setToast(TYPE_SUCCESS, response.data.message, true)
+			if (reqConfig.isAlertErrorMsg) {
+				notificationService.setErrorNotification(response.message)
+			}
 			if (statusCode.toString().startsWith('5'))
 				appStore().setErrorCode(CODE_500)
 			await router.push({ path: ERROR_PAGE_PATH })
@@ -62,10 +92,38 @@ service.interceptors.response.use(
 		}
 	},
 	async (error) => {
+		if (reqConfig.isAlertErrorMsg) {
+			notificationService.setErrorNotification(error.message)
+		}
 		appStore().setErrorCode(CODE_500)
 		await router.push({ path: ERROR_PAGE_PATH })
 		return Promise.reject(error)
 	}
 )
+export function axiosRequest({
+	url,
+	method,
+	data,
+	isParams,
+	bfLoading,
+	afHLoading,
+	isUploadFile,
+	isDownLoadFile,
+	timeout,
+	isAlertErrorMsg = true,
+}) {
+	return service({
+		url,
+		method: method ?? 'get',
+		data: data ?? {},
+		isParams: isParams ?? false,
+		bfLoading: bfLoading ?? false,
+		afHLoading: afHLoading ?? true,
+		isUploadFile: isUploadFile ?? false,
+		isDownLoadFile: isDownLoadFile ?? false,
+		isAlertErrorMsg,
+		timeout: timeout ?? 15000,
+	})
+}
 
-export default service
+export default axiosRequest
