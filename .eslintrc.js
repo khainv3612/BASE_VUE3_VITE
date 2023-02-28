@@ -32,6 +32,8 @@ module.exports = {
 	ignorePatterns: ['*/node_modules/**'],
 	plugins: ['vue', 'import'],
 	rules: {
+		'vue/no-v-html': 0,
+		'vue/v-on-event-hyphenation': 0,
 		'import/no-unresolved': [0],
 		'vue/no-multiple-template-root': 0,
 		'vue/valid-template-root': 'off',

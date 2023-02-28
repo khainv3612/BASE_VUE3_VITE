@@ -5,3 +5,4 @@ node_modules
 dist
 *.d.ts
 index.html
+vite.config.js
